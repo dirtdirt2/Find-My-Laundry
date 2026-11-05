@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Hammersmith+One&family=Inter:wght@400;600;700&family=Jomhuria&display=swap');
+
 .navigationPage {
     width: 100%;
     height: 100dvh;
@@ -120,4 +122,272 @@
 
     cursor: pointer;
     touch-action: manipulation;
+}
+
+.laundryMarkerWrapper {
+    background: transparent;
+    border: none;
+}
+
+.laundryMarker {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    position: relative;
+}
+
+.laundryPin {
+    width: 30px;
+    height: 30px;
+    background: #40C2FF;
+    border: 2px solid #FFFFFF;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.laundryPin svg {
+    transform: rotate(45deg) translateX(.5px);
+}
+
+.laundryPrice {
+    background: #2D2D2D;
+    color: #FFFFFF;
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    margin-left: -12px;
+    padding: 4px 7px 4px 17px;
+    transform: translateY(3px);
+}
+
+.shopPanel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 265px;
+    box-sizing: border-box;
+    padding: 30px 18px 24px;
+    background: #FFFFFF;
+    border-radius: 25px 25px 0 0;
+    z-index: 1000;
+}
+
+.shopPanelHandle {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 3px;
+    background: #D9D9D9;
+    border-radius: 3px;
+}
+
+.closePanelButton {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #999999;
+    color: #FFFFFF;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.shopLabel {
+    position: absolute;
+    top: 26px;
+    left: 20px;
+    color: #747474;
+    font-family: "Jomhuria", sans-serif;
+    font-size: 16px;
+    letter-spacing: 10%;
+    margin: 0;
+}
+
+.shopHeader {
+    position: absolute;
+    top: 51px;
+    left: 18px;
+    right: 18px;
+    height: 41px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.shopIcon {
+    width: 41px;
+    height: 41px;
+    flex-shrink: 0;
+    background: #B5D4E3;
+    border-radius: 10px;
+}
+
+.shopInfo {
+    position: absolute;
+    left: 48px;
+    top: -4px;
+    min-width: 0;
+}
+
+.shopInfo h2 {
+    margin: 0;
+    color: #000000;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.shopMeta {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    margin: 0;
+    color: #747474;
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.shopMeta span {
+    color: #AC8737;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.shopServices {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    margin: 0;
+    color: #6B7280;
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.shopStatus {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 48px;
+    height: 23px;
+    border-radius: 10px;
+    background: rgba(22, 163, 74, 0.4);
+    color: #16A34A;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+}
+
+.statusDot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #16A34A;
+}
+
+.shopPrice {
+    position: absolute;
+    top: 127px;
+    left: 18px;
+    font-family: "Jomhuria", sans-serif;
+    width: calc(100% - 36px);
+    height: 38px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border-top: 1px solid #A0A0A0;
+    border-bottom: 1px solid #A0A0A0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shopDetailsButton {
+    position: absolute;
+    top: 199px;
+    left: 17px;
+    width: 356px;
+    height: 42px;
+    margin: 0;
+    border: none;
+    border-radius: 10px;
+    background: #0369A1;
+    color: #FFFFFF;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 12px;
+    letter-spacing: 10%;
+}
+
+.serviceTags {
+    position: absolute;
+    top: 175px;
+    left: 18px;
+    display: flex;
+    gap: 6px;
+}
+
+.serviceTags span {
+    height: 16px;
+    padding: 0 9px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D9D9D9;
+    border-radius: 16px;
+    color: #777777;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.priceGroup {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.shopPrice>span:first-child {
+    font-family: "Jomhuria", sans-serif;
+    font-size: 16px;
+    color: #747474;
+}
+
+.priceAmount {
+    font-family: "jsMath-cmbx10", serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.priceUnit {
+    font-family: "Jomhuria", sans-serif;
+    font-size: 17px;
+    color: #8C8C8C;
 }
