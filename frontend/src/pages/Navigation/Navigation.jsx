@@ -1,90 +1,9 @@
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
-import { ChevronLeft, Search, ZoomIn, ZoomOut, X } from "lucide-react";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { ChevronLeft, Search, X } from "lucide-react";
 import { useState } from "react";
-import L from "leaflet";
-import "../styles/Navigation.css";
-
-function createLaundryIcon(price) {
-    return L.divIcon({
-        className: "laundryMarkerWrapper",
-        html: `
-            <div class="laundryMarker">
-                <div class="laundryPin">
-                    <svg viewBox="0 0 24 24" width="22" height="22"
-                        fill="none" stroke="#FFFFFF"
-                        stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <rect x="4" y="3" width="16" height="18" rx="2"/>
-                        <circle cx="12" cy="13" r="5"/>
-                        <circle cx="8" cy="6.5" r="0.7" fill="#242424"/>
-                        <circle cx="11" cy="6.5" r="0.7" fill="#242424"/>
-                    </svg>
-                </div>
-                <div class="laundryPrice">${price}</div>
-            </div>
-        `,
-        iconSize: [150, 58],
-        iconAnchor: [25, 58],
-    });
-}
-
-function MapControls() {
-    const map = useMap();
-
-    const handleCurrentLocation = () => {
-        if (!navigator.geolocation) return;
-
-        navigator.geolocation.getCurrentPosition((position) => {
-            const { latitude, longitude } = position.coords;
-            map.flyTo([latitude, longitude], 16);
-        });
-    };
-
-    return (
-        <div className="mapControls">
-            <button
-                className="mapControlButton"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    handleCurrentLocation();
-                }}
-            >
-                <svg width="26" height="26" viewBox="0 0 26 26">
-                    <circle
-                        cx="13"
-                        cy="13"
-                        r="12"
-                        fill="none"
-                        stroke="#000000"
-                        strokeWidth="1"
-                    />
-                    <circle
-                        cx="13"
-                        cy="13"
-                        r="10"
-                        fill="#40C2FF"
-                        stroke="#000000"
-                        strokeWidth="1"
-                    />
-                </svg>
-            </button>
-
-            <button
-                className="mapControlButton"
-                onClick={() => map.zoomIn()}
-            >
-                <ZoomIn size={35} strokeWidth={1.8} />
-            </button>
-
-            <button
-                className="mapControlButton"
-                onClick={() => map.zoomOut()}
-            >
-                <ZoomOut size={35} strokeWidth={1.8} />
-            </button>
-        </div>
-    );
-}
+import "./Navigation.css";
+import MapControls from "./MapControls";
+import { createLaundryIcon } from "./navigationFunctions";
 
 function Navigation() {
 
