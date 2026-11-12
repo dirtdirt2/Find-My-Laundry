@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MapPin, Bell, Search, SlidersHorizontal } from 'lucide-react';
 import LaundryCard from '../components/LaundryCard';
 

@@ -1,0 +1,301 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #383838;
+  color: #111;
+}
+
+.shop-screen {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  padding: 22px 10px;
+}
+
+.shop-container {
+  width: 100%;
+  max-width: 375px;
+  min-height: 100vh;
+  background: #f7f9fa;
+  padding: 25px 17px;
+}
+
+/* Header */
+
+.shop-header {
+  height: 52px;
+  background: #0872a8;
+  border-radius: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.shop-header h2 {
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* Shop Image */
+
+.shop-image-wrapper {
+  width: 100%;
+  height: 199px;
+  border-radius: 21px;
+  overflow: hidden;
+  margin-bottom: 11px;
+}
+
+.shop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Shop Information */
+
+.shop-info {
+  padding: 0 6px 10px;
+}
+
+.shop-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shop-name-row h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.shop-location {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  color: #555;
+}
+
+.open-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #a5e3bd;
+  color: #087d42;
+  padding: 5px 9px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #13b95b;
+  border-radius: 50%;
+}
+
+/* Action Buttons */
+
+.shop-actions {
+  display: flex;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.shop-actions button {
+  flex: 1;
+  min-height: 44px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.call-button {
+  background: #0872a8;
+  color: white;
+  border: 1px solid #0872a8;
+}
+
+.call-button:hover {
+  background: #055c8a;
+}
+
+.save-button {
+  background: white;
+  color: #111;
+  border: 1px solid #aaa;
+}
+
+.save-button:hover {
+  background: #eaf4f9;
+}
+
+.save-button.saved {
+  background: #e1f3ea;
+  color: #087d42;
+  border-color: #87cba6;
+}
+
+/* General Sections */
+
+.shop-section {
+  border-top: 1px solid #bcbcbc;
+  padding-top: 7px;
+  margin-top: 0;
+  padding-bottom: 12px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+/* Pricing */
+
+.pricing-card {
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  background: white;
+  padding: 0 6px;
+}
+
+.price-row {
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  font-size: 13px;
+  color: #555;
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.price-row strong {
+  color: #111;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Operating Hours */
+
+.hours-section {
+  padding-top: 7px;
+  padding-bottom: 8px;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #555;
+}
+
+.hours-row strong {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+}
+
+/* Customer Reviews */
+
+.reviews-section {
+  border-top: 1px solid #bcbcbc;
+  padding-top: 7px;
+}
+
+.reviews-section .section-title {
+  margin-bottom: 2px;
+}
+
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 9px;
+  font-size: 13px;
+}
+
+.stars,
+.review-stars {
+  color: #ff9900;
+  letter-spacing: -1px;
+}
+
+.rating-summary strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rating-summary span {
+  color: #555;
+}
+
+/* Individual Review */
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.review-card {
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  background: white;
+  padding: 8px;
+}
+
+.review-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.review-stars {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.review-card p {
+  color: #444;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .shop-screen {
+    padding: 0;
+  }
+
+  .shop-container {
+    max-width: none;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: max(20px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  }
+}

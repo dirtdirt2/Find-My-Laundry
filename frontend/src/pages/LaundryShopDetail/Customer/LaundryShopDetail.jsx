@@ -1,18 +1,9 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Phone,
   Bookmark,
-  Building2,
   MapPin,
-  Clock,
-  Star,
-  CheckCircle2,
-  Package,
-  Shirt,
-  Droplets,
-  Flame,
-  ChevronLeft
 } from "lucide-react";
 
 import "./LaundryShopDetail.css";
