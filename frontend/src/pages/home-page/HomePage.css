@@ -1,0 +1,9 @@
+/* Hide scrollbars while keeping the page and category row scrollable. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
