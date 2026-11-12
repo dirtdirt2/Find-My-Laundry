@@ -1,10 +1,3 @@
-/**
- * Home-page data and helper functions.
- *
- * Keep page-specific mock data, category options, and filtering logic here so
- * HomePage.jsx can focus on rendering the page.
- */
-
 export const LAUNDRY_CATEGORIES = [
   'All',
   'Full-Service',
