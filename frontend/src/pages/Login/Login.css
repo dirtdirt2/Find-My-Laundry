@@ -1,0 +1,119 @@
+.loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    font-family: "DM Sans", sans-serif;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.loginContainer {
+    width: 100%;
+    max-width: 390px;
+}
+
+.loginTitle {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0369a1;
+    margin-bottom: 40px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.loginInputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loginInputGroup label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #242424;
+}
+
+.loginInputGroup input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.loginInputGroup input:focus {
+    border-color: #0369a1;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #0369a1;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.forgotPassword {
+    align-self: flex-end;
+    font-size: 13px;
+    color: #0369a1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+}
+
+.passwordInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.passwordInputWrapper input {
+    padding-right: 65px;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 14px;
+    border: none;
+    background: none;
+    color: #0369a1;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.signupText {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #747474;
+}
+
+.signupText a {
+    color: #0369a1;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signupText a:hover {
+    text-decoration: underline;
+}
