@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import ShopCard from "../../components/ShopCard";
-import { shops } from "../../data/shops";
+import { shops } from "./shops";
 import "./SearchPage.css";
 
 export default function SearchPage() {
