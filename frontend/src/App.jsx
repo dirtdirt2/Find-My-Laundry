@@ -1,8 +1,8 @@
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import CustomerLaundryShopDetail from "./pages/LaundryShopDetail/Customer/LaundryShopDetail";
-import OwnerLaundryShopDetail from "./pages/LaundryShopDetail/Owner/LaundryShopDetail";
+import CustomerLaundryShopDetail from "./pages/laundryshopdetail/customer/laundryshopdetail";
+import OwnerLaundryShopDetail from "./pages/laundryshopdetail/owner/laundryShopdetail";
 
 function App() {
   return (
