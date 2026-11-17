@@ -6,7 +6,7 @@ import {
   MapPin,
 } from "lucide-react";
 
-import "./LaundryShopDetail.css";
+import "./laundryshopdetail.css";
 
 const services = [
   { name: "Wash per kg", price: "₱35" },
@@ -48,7 +48,7 @@ function LaundryShopDetail() {
         {/* Header */}
         <header className="shop-header">
           <h2>Laundry Shop Detail</h2>
-          <p>Review your shop profile and customer-facing details.</p>
+          <p>Explore services, operating hours, and customer reviews.</p>
         </header>
 
         {/* Shop Image */}
