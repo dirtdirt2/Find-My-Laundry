@@ -48,6 +48,7 @@ function LaundryShopDetail() {
         {/* Header */}
         <header className="shop-header">
           <h2>Laundry Shop Detail</h2>
+          <p>Explore services, operating hours, and customer reviews.</p>
         </header>
 
         {/* Shop Image */}

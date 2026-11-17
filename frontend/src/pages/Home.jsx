@@ -107,6 +107,9 @@ export default function Home() {
         <h2 className="text-sm font-bold text-slate-900 tracking-tight pt-1">
           Laundry Shops in Naga City
         </h2>
+        <p className="text-xs text-slate-500">
+          {filteredShops.length} {filteredShops.length === 1 ? 'shop' : 'shops'} found
+        </p>
 
         {/* Shop List */}
         <div className="space-y-4 pb-4">
