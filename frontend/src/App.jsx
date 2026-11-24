@@ -1,12 +1,14 @@
 import HomePage from './pages/home-page/HomePage.jsx';
 import RegisterPage from './pages/register-page/RegisterPage.jsx';
+import ProfilePage from './pages/profile-page/ProfilePage.jsx';
 
 export default function App() {
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
-
-  const ActivePage = currentPath === '/register'
-    ? RegisterPage
-    : HomePage;
+  const pages = {
+    '/register': RegisterPage,
+    '/profile': ProfilePage,
+  };
+  const ActivePage = pages[currentPath] || HomePage;
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-slate-900">

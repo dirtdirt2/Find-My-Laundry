@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Bell, Search, SlidersHorizontal } from 'lucide-react';
+import { MapPin, Bell, Search, SlidersHorizontal, UserRound } from 'lucide-react';
 import LaundryCard from '../../components/LaundryCard';
 import {
   LAUNDRY_CATEGORIES,
@@ -28,9 +28,19 @@ export default function HomePage() {
             <MapPin className="w-5 h-5 text-slate-800" />
             <span className="font-bold text-sm text-slate-900">Naga City</span>
           </div>
-          <div className="relative">
-            <Bell className="w-5 h-5 text-slate-800 cursor-pointer" />
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full" />
+          <div className="flex items-center gap-3">
+            <a
+              href="/profile"
+              aria-label="Open profile"
+              title="My Profile"
+              className="text-slate-700 hover:text-sky-600 transition-colors"
+            >
+              <UserRound className="w-5 h-5" />
+            </a>
+            <div className="relative">
+              <Bell className="w-5 h-5 text-slate-800 cursor-pointer" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full" />
+            </div>
           </div>
         </div>
 
