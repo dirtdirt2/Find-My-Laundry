@@ -1,22 +1,41 @@
 import "./Login.css";
 import { useState } from "react";
+import { handleLogin } from "./loginFunctions";
 
 function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const result = handleLogin(email, password);
+
+        if (!result.success) {
+            setError(result.message);
+            return;
+        }
+
+        setError("");
+        console.log("Login form submitted successfully.");
+    };
 
     return (
         <div className="loginPage">
             <div className="loginContainer">
                 <h1 className="loginTitle">Find My Laundry</h1>
 
-                <form className="loginForm">
+                <form className="loginForm" onSubmit={handleSubmit}>
                     <div className="loginInputGroup">
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
                             id="email"
                             placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -27,6 +46,8 @@ function Login() {
                                 type={showPassword ? "text" : "password"}
                                 id="password"
                                 placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
 
                             <button
@@ -41,6 +62,9 @@ function Login() {
                             Forgot Password?
                         </a>
                     </div>
+                    {error && (
+                        <p className="loginError">{error}</p>
+                    )}
 
                     <button type="submit" className="loginButton">
                         Log In

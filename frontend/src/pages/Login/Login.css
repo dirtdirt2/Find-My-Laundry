@@ -117,3 +117,10 @@
 .signupText a:hover {
     text-decoration: underline;
 }
+
+.loginError {
+    color: #dc2626;
+    font-size: 13px;
+    margin: 0;
+    text-align: center;
+}
