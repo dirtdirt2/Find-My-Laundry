@@ -18,6 +18,12 @@ dist-ssr/
 .env.local
 .env.*.local
 
+# Local database files (never commit user data or local database snapshots)
+backend/data/
+*.db
+*.sqlite
+*.sqlite3
+
 # Editor directories and system files
 .vscode/*
 !.vscode/extensions.json
