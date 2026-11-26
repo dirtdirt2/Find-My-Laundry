@@ -14,6 +14,7 @@ import {
   normalizeOtp,
   validateRegistrationForm,
 } from './RegisterPage.js';
+import { registerAccount, resendEmailOtp, verifyEmailOtp } from '../../services/api.js';
 import './RegisterPage.css';
 
 const INITIAL_FORM_VALUES = {
@@ -62,6 +63,9 @@ export default function RegisterPage() {
   const [stage, setStage] = useState('register');
   const [otp, setOtp] = useState('');
   const [otpMessage, setOtpMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [requestError, setRequestError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateField = (field) => (event) => {
     const value = field === 'acceptedTerms'
@@ -72,22 +76,35 @@ export default function RegisterPage() {
     setErrors((currentErrors) => ({ ...currentErrors, [field]: '' }));
   };
 
-  const handleRegistrationSubmit = (event) => {
+  const handleRegistrationSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = validateRegistrationForm(formValues);
     setErrors(validationErrors);
+    setRequestError('');
 
-    if (Object.keys(validationErrors).length > 0) {
-      return;
-    }
+    if (Object.keys(validationErrors).length > 0) return;
 
-    // Frontend preview only: no account is created and no email is sent here.
+    setIsSubmitting(true);
     setOtp('');
     setOtpMessage('');
-    setStage('verify');
+
+    try {
+      const response = await registerAccount({
+        fullName: formValues.fullName.trim(),
+        email: formValues.email.trim(),
+        password: formValues.password,
+        acceptedTerms: formValues.acceptedTerms,
+      });
+      setOtpMessage(response.message || 'Registration details saved. Check the backend terminal for your local OTP.');
+      setStage('verify');
+    } catch (error) {
+      setRequestError(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleOtpSubmit = (event) => {
+  const handleOtpSubmit = async (event) => {
     event.preventDefault();
 
     if (otp.length !== 6) {
@@ -95,15 +112,30 @@ export default function RegisterPage() {
       return;
     }
 
-    setOtpMessage(
-      'OTP verification is not connected yet. No code has been checked and your account has not been created.',
-    );
+    setIsSubmitting(true);
+    setOtpMessage('');
+    try {
+      const response = await verifyEmailOtp(formValues.email.trim(), otp);
+      setSuccessMessage(response.message || 'Your email has been verified.');
+      setStage('success');
+    } catch (error) {
+      setOtpMessage(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleResendOtp = () => {
-    setOtpMessage(
-      'Email delivery is not connected yet, so a new verification code cannot be sent.',
-    );
+  const handleResendOtp = async () => {
+    setOtpMessage('');
+    setIsSubmitting(true);
+    try {
+      const response = await resendEmailOtp(formValues.email.trim());
+      setOtpMessage(response.message || 'A new verification code was generated. Check the backend terminal.');
+    } catch (error) {
+      setOtpMessage(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const returnToRegistration = () => {
@@ -129,6 +161,8 @@ export default function RegisterPage() {
               <h1>Create your account</h1>
               <p>Join Find My Laundry and discover laundry services around you.</p>
             </div>
+
+            {requestError && <p className="register-otp-message" role="alert">{requestError}</p>}
 
             <form className="register-form" onSubmit={handleRegistrationSubmit} noValidate>
               <FormField
@@ -214,8 +248,8 @@ export default function RegisterPage() {
                 )}
               </div>
 
-              <button className="register-primary-button" type="submit">
-                Continue to email verification
+              <button className="register-primary-button" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Creating account...' : 'Continue to email verification'}
                 <ArrowRight size={18} />
               </button>
             </form>
@@ -224,7 +258,7 @@ export default function RegisterPage() {
               Already have an account? <a href="/login">Log in</a>
             </p>
           </>
-        ) : (
+        ) : stage === 'verify' ? (
           <section className="register-verify" aria-labelledby="verify-heading">
             <button className="register-back-button" type="button" onClick={returnToRegistration}>
               <ArrowLeft size={17} />
@@ -237,8 +271,8 @@ export default function RegisterPage() {
             <span className="register-eyebrow">ONE MORE STEP</span>
             <h1 id="verify-heading">Verify your email</h1>
             <p className="register-verify__description">
-              A 6-digit verification code will be sent to
-              <strong> {maskEmailAddress(formValues.email)}</strong> once email delivery is connected.
+              Enter the 6-digit verification code generated for
+              <strong> {maskEmailAddress(formValues.email)}</strong>.
             </p>
 
             <form className="register-otp-form" onSubmit={handleOtpSubmit}>
@@ -267,23 +301,33 @@ export default function RegisterPage() {
 
               {otpMessage && <p className="register-otp-message" role="status">{otpMessage}</p>}
 
-              <button className="register-primary-button" type="submit">
-                Verify email
+              <button className="register-primary-button" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Verifying...' : 'Verify email'}
                 <ArrowRight size={18} />
               </button>
             </form>
 
-            <button className="register-resend-button" type="button" onClick={handleResendOtp}>
+            <button className="register-resend-button" type="button" onClick={handleResendOtp} disabled={isSubmitting}>
               Didn't receive a code? <span>Resend code</span>
             </button>
 
             <div className="register-backend-note">
               <ShieldCheck size={18} />
               <p>
-                <strong>Frontend preview:</strong> email sending and OTP validation will be connected
-                when the backend is implemented. No email or account is created yet.
+                <strong>Local development:</strong> the OTP is printed in the backend terminal.
+                Actual email delivery must be configured before production registration is enabled.
               </p>
             </div>
+          </section>
+        ) : (
+          <section className="register-verify register-success" aria-labelledby="success-heading">
+            <div className="register-verify__icon register-success__icon" aria-hidden="true">
+              <CheckCircle2 size={29} />
+            </div>
+            <span className="register-eyebrow">EMAIL VERIFIED</span>
+            <h1 id="success-heading">You're all set!</h1>
+            <p className="register-verify__description">{successMessage}</p>
+            <a className="register-primary-button register-success__link" href="/login">Continue to login</a>
           </section>
         )}
 

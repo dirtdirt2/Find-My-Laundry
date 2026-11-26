@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MapPin, Bell, Search, SlidersHorizontal, UserRound } from 'lucide-react';
 import LaundryCard from '../../components/LaundryCard';
+import { getLaundryShops } from '../../services/api.js';
 import {
   LAUNDRY_CATEGORIES,
   MOCK_LAUNDRY_SHOPS,
@@ -11,9 +12,34 @@ import './HomePage.css';
 export default function HomePage() {
   const [activeChip, setActiveChip] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [shops, setShops] = useState(MOCK_LAUNDRY_SHOPS);
+
+  useEffect(() => {
+    console.log("[HomePage] Component mounted");
+    console.log("[HomePage] Fetching laundry shops...");
+
+
+    let isActive = true;
+
+    getLaundryShops()
+      .then((response) => {
+        if (isActive && Array.isArray(response.shops)) {
+          setShops(response.shops);
+        }
+      })
+      .catch((error) => {
+        // Preserve the existing sample data so the Home Page remains usable
+        // while the local API or cloud database is unavailable.
+        console.warn('[HomePage] Showing sample shops because the API is unavailable:', error.message);
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   const filteredShops = filterLaundryShops(
-    MOCK_LAUNDRY_SHOPS,
+    shops,
     activeChip,
     searchQuery,
   );

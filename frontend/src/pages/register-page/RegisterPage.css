@@ -378,3 +378,31 @@
     gap: 10px;
   }
 }
+
+
+.register-primary-button:disabled,
+.register-resend-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.register-success {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  padding-top: 36px;
+}
+
+.register-success__icon {
+  background: #e3f8ed;
+  color: #168b54;
+}
+
+.register-success__link {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+  text-decoration: none;
+}
